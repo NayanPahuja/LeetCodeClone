@@ -1,0 +1,31 @@
+<!-- views/questions.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+</head>
+<body>
+    <h1>Questions List</h1>
+    <% for (const question of questions) { %>
+        <div>
+            <h1><%= question.questionID %></h1>
+            <h2><%= question.title %> </h2>
+            <p><%= question.description %></p>
+            <h3>Test Cases:</h3>
+            <ul>
+                <% for (const testCase of question.testCases) { %>
+                    <li>Input: <%= testCase.input %>, Output: <%= testCase.output %></li>
+                <% } %>
+            </ul>
+        </div>
+    <% } %>
+    <h1>Submit Problem Solution</h1>
+    <form action="/submissions" method="post">
+        <label for="solution">Your Solution:</label>
+        <textarea id="solution" name="solution" required></textarea>
+        <input type="submit" value="Submit Solution">
+    </form>
+</body>
+</html>
