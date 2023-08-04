@@ -1,0 +1,32 @@
+<!-- views/submissionsUI.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submissions</title>
+</head>
+<body>
+    <% question.forEach((questions) => { %>
+        <h1>Submissions for "<%= question.title %>"</h1>
+        <% if (submissions.length > 0) { %>
+            <ul>
+                <% submissions.forEach((submission, index) => { %>
+                    <li>
+                        <p>Submission <%= index + 1 %>:</p>
+                        <pre><code><%= submission.solution %></code></pre>
+                        <% if (submission.isAccepted) { %>
+                            <span style="color: green;">(Accepted)</span>
+                        <% } else { %>
+                            <span style="color: red;">(Rejected)</span>
+                        <% } %>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No submissions yet for this question.</p>
+        <% } %>
+    <% }) %>
+    <a href="/questions">Back to Questions</a>
+</body>
+</html>

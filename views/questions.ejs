@@ -8,23 +8,32 @@
 </head>
 <body>
     <h1>Questions List</h1>
-    <% for (const question of questions) { %>
+    <% questions.forEach((question) => { %>
         <div>
-            <h1><%= question.questionID %></h1>
-            <h2><%= question.title %> </h2>
+            <h4><%= question.id %></h4>
+            <h2><%= question.title %></h2>
             <p><%= question.description %></p>
             <h3>Test Cases:</h3>
             <ul>
-                <% for (const testCase of question.testCases) { %>
+                <% question.testCases.forEach((testCase) => { %>
                     <li>Input: <%= testCase.input %>, Output: <%= testCase.output %></li>
-                <% } %>
+                <% }) %>
             </ul>
         </div>
-    <% } %>
+    <% }) %>
     <h1>Submit Problem Solution</h1>
     <form action="/submissions" method="post">
+        <label for="question">Select a Question:</label>
+        <select id="question" name="questionID" required>
+            <option value="" disabled selected>Select a question...</option>
+            <% questions.forEach((question) => { %>
+                <option value="<%= question.id %>"><%= question.title %></option>
+            <% }) %>
+        </select>
+        <br>
         <label for="solution">Your Solution:</label>
         <textarea id="solution" name="solution" required></textarea>
+        <br>
         <input type="submit" value="Submit Solution">
     </form>
 </body>

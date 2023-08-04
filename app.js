@@ -20,7 +20,7 @@ const users = [];
 
 const QUESTIONS = [{
     title: "Two states",
-    id : 1,
+    id : '1',
     description: "Given an array , return the maximum of the array?",
     testCases: [{
         input: "[1,2,3,4,5]",
@@ -82,22 +82,49 @@ app.post('/register', (req, res) => {
     }
 });
 
- app.get('/submissions', function(req,res){
-    const problemTitle = question
- })
- app.post("/submissions", function(req, res) {
-    const {solution} = req.body
-    const isAccepted = Math.random() < 0.5
+app.get('/submissions/:questionId', (req, res) => {
+    const { questionId } = req.params;
+  
+    // Find the question by ID in the QUESTIONS array
+    const question = QUESTIONS.find((q) => q.id === questionId);
+  
+    if (!question) {
+      // If the question is not found, send an error response
+      return res.status(404).send('Question not found.');
+    }
+  
+    // Filter the submissions array to get submissions for the specific question
+    const questionSubmissions = SUBMISSION.filter((submission) => submission.questionID === questionId);
+  
+    // Render the submissions page with the question and its submissions
+    res.render('submissionsUI', { question : QUESTIONS, submissions: questionSubmissions });
+  });
+  
+ app.post("/submissions", function (req, res) {
+    const { questionID, solution } = req.body;
+    const questions = QUESTIONS.find((q) => q.id === questionID);
+  
+    if (!questions) {
+      // If the question is not found, send an error response
+      return res.status(404).send('Question not found.');
+    }
+  
+    const isAccepted = Math.random() < 0.5;
     const newSubmission = {
-        solution,
-        isAccepted
+      questionID,
+      solution,
+      isAccepted
     };
+  
     SUBMISSION.push(newSubmission);
-
-    res.json({ isAccepted });
-    // Store the submission in the SUBMISSION array above
- });
-
+  
+    if (isAccepted) {
+      res.render('submissionsUI')
+    } else {
+      res.send('Wrong Solution!. Try Again!');
+    }
+  });
+  
 // Logout functionality
 app.get('/logout', (req, res) => {
     req.session.destroy(); // Destroy the session, logging the user out
