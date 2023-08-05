@@ -20,7 +20,6 @@ const users = [];
 
 const QUESTIONS = [{
     title: "Two states",
-    id : '1',
     description: "Given an array , return the maximum of the array?",
     testCases: [{
         input: "[1,2,3,4,5]",
@@ -58,9 +57,9 @@ app.post('/login', (req, res) => {
 
     if (user) {
         req.session.user = user;
-        res.redirect('/dashboard');
+        res.status(200).send({token: user.id})
     } else {
-        res.send('Invalid Username or Password');
+        res.status(401).send('Invalid Username or Password');
     }
 });
 
@@ -73,12 +72,12 @@ app.post('/register', (req, res) => {
 
     // If user already exists
     if (existingUser) {
-        res.send('Username already exists!. Please try again');
+        res.status(401).send('Username already exists!. Please try again');
     } else {
-        const newUser = { username, password };
+        const newUser = { id : Math.random() * 1e7, username: username, password : password };
         users.push(newUser);
         req.session.user = newUser; // Use single "=" for assignment
-        res.redirect('/dashboard');
+        res.status(200).redirect('/dashboard');
     }
 });
 
