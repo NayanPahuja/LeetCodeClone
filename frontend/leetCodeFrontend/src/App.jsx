@@ -3,6 +3,8 @@ import './App.css'
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Login from './components/login'
 import SignUp from './components/signup';
+import Dashboard from './components/dashboard';
+
 
 const problems = [{
   title: "201. Bitwise AND of Numbers Range",
@@ -30,8 +32,9 @@ function App() {
       <BrowserRouter>
       <Routes>
       <Route path='/login' Component={Login}/>
-      <Route path='/signup' Component={SignUp}>
-        </Route>
+      <Route path='/signup' Component={SignUp}/>
+      <Route path = '/dashboard' Component={ Dashboard }/>
+      
       </Routes>
         
       </BrowserRouter>

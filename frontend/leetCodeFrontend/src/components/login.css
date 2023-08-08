@@ -33,6 +33,7 @@ input {
 
 input[type='submit'] {
     cursor: pointer;
+    width: 300px;
 }
 
 
@@ -44,8 +45,12 @@ input[type='submit'] {
 
 .form__field {
     display: flex;
+    align-items: center;
+    flex-direction: column;
     margin: 14px;
     margin: 0.875rem;
+    padding-bottom: 0.5em;
+
 }
 
 .form__input {
@@ -60,24 +65,15 @@ input[type='submit'] {
     color: #eee;
 }
 
-.login label,
 .login input[type='text'],
 .login input[type='password'],
 .login input[type='submit'] {
     border-radius: 0.25rem;
+    width: 300px;
     padding: 16px;
     padding: 1rem;
 }
 
-.login label {
-    background-color: #222122;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    padding-left: 20px;
-    padding-left: 1.25rem;
-    padding-right: 20px;
-    padding-right: 1.25rem;
-}
 
 .login input[type='password'],
 .login input[type='text'] {
