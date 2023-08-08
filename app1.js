@@ -101,11 +101,6 @@ app.post("/submissions", function(req, res) {
     return res.status(200).send('Submission has been successfully accepted!')
    }
 });
-
-// leaving as hard todos
-// Create a route that lets an admin add a new problem
-// ensure that only admins can do that.
-
 app.post('/addquestion', (req,res)=>{
   const {adminID,title, description,testCases} = req.body
   const admin = ADMINS.find((a)=> a.adminID === adminID)
