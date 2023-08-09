@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from 'react'
 import './login.css'
-
+import { Link } from 'react-router-dom'
+import NavBar from "./navbar";
 const Login = () => {
   const [userEmail, setUserEmail] = useState('')
   const [password, setUserPassword] = useState('')
@@ -11,7 +12,10 @@ const Login = () => {
     // Add your login logic here
   };
   return (
-    <div id="login-container"> 
+    <div>
+
+    <NavBar/>
+    <div id="login-container">
       <h1 class = 'login-text'>Login into your account</h1>
       <p class = 'login-intro'><span>Please log into your account to start solving!</span></p>
       <form action="#" method="#" class="form login">
@@ -24,9 +28,13 @@ const Login = () => {
 <div class="form__field">
 <input type="submit" value="Log into your account"/>
 </div>
+<Link className = 'links' to={`/signup`}>
+                
+             
 <p class="text--center">Not a member? <a href="#" class = "link">Sign up now</a></p>
-
+</Link>
 </form>
+    </div>
     </div>
   )
 }

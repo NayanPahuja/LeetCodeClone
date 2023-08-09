@@ -1,0 +1,46 @@
+
+
+table {
+    margin: 2rem auto;
+    border-collapse: collapse;
+    width: 95%;
+}
+
+
+tr {
+    color: rgb(0, 0, 156);
+    
+    
+}
+
+th {
+    border-bottom: 2px solid gray;
+    padding: 0.5rem 0 0.5rem 0.3rem;
+    color: whitesmoke;
+    text-align: start;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+td {
+    text-align: justify;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 1rem;
+}
+
+.Easy {
+    color: lawngreen;
+    font-weight: 400;
+}
+.Medium {
+    color: rgb(255, 166, 0);
+    font-weight: 400;
+}
+.Hard {
+    color: red;
+    font-weight: 400;
+}
+.links{
+    color: whitesmoke;
+}

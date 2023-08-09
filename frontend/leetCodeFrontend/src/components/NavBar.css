@@ -8,6 +8,8 @@
     position: sticky;
     top: 0;
     z-index: 20;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
   }
   
   .nav-container {

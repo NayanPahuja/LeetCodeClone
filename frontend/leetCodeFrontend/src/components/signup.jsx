@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from 'react'
 import './signup.css'
-
+import NavBar from "./navbar";
+import { Link } from "react-router-dom";
 const SignUp = () => {
   const [userEmail, setUserEmail] = useState('')
   const [password, setUserPassword] = useState('')
@@ -11,6 +12,9 @@ const SignUp = () => {
     
   };
   return (
+    <div>
+
+    <NavBar/>
     <div id="login-container"> 
       <h1 class = 'login-text'>Register Your Account</h1>
       <p class = 'login-intro'><span>Please Register Your Account!</span></p>
@@ -24,9 +28,11 @@ const SignUp = () => {
 <div class="form__field">
 <input type="submit" value="Register"/>
 </div>
+<Link className = 'links' to={`/login`}>
 <p class="text--center">Already a member? <a href="#" class = "link">Login</a></p>
-
+</Link>
 </form>
+    </div>
     </div>
   )
 }

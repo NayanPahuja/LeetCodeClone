@@ -10,7 +10,7 @@ function NavBar() {
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <NavLink exact to="/" className="nav-logo">
+          <NavLink exact to="/dashboard" className="nav-logo">
             QuickCode
             <i className="fas fa-code"></i>
           </NavLink>
@@ -19,7 +19,7 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/"
+                to="/dashboard"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
@@ -41,7 +41,7 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/blog"
+                to="/random"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
@@ -52,12 +52,12 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/contact"
+                to="/login"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
               >
-                Logout
+                Login
               </NavLink>
             </li>
           </ul>

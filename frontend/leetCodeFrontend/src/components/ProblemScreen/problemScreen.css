@@ -1,0 +1,59 @@
+#problempage {
+    min-height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    align-items: flex-start;
+    background-color: #1d1d1f;
+}
+
+.ques , .code {
+    width: 50%;
+    min-height: 100vh;
+    max-width: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2rem;
+    color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.code-form {
+    height: 70vh;
+    max-width: 95%;
+}
+.example{
+    font-size: larger;
+}
+textarea , pre {
+    background-color: #1d1d1f;
+    width: 100%;
+    height: 100%;
+    color: whitesmoke;
+    font-size: 1.3rem;
+    -moz-tab-size : 4;
+      -o-tab-size : 4;
+         tab-size : 4;
+         
+}
+
+button {
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    font-weight: 800;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#test {
+    background-color: gray;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;;
+}
+#submit {
+    background-color: rgb(68, 207, 68);
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+}
