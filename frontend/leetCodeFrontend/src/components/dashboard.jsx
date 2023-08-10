@@ -23,7 +23,7 @@ const Dashboard = () => {
       
         useEffect(() => {
             init();
-        },[problems])
+        },[])
   return (
     <div id='dashboard-container'>
         <NavBar/>
