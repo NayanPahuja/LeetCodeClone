@@ -1,4 +1,8 @@
 # LeetCodeClone
 
 Trying to create a Leet Code Clone.
-Currently working on setting an http server for login and register
+- Completed Frontend in react.
+- Completed Backend Express API hits
+- Currently Working on connecting it to MongoDB.
+- To work on Docker for code containerization
+- 
