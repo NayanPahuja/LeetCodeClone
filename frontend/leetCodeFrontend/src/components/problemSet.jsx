@@ -1,7 +1,20 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './problemSet.css'
-const ProblemSet = ({problems}) => {
+const ProblemSet = () => {
+  const [problems, setProblems] = useState([]);
+        const init =  async() => {
+          const response = await fetch("http://localhost:3000/dashboard", {
+            method: "GET"
+          })
+      
+          const json = await response.json()
+          setProblems(json.problems)
+        }
+        useEffect(() => {
+            init();
+        },[problems])
   return (
     <div id="allproblems">
       <table>
@@ -13,7 +26,7 @@ const ProblemSet = ({problems}) => {
             <th>Acceptance</th>
           </tr>
 
-          {problems.map((prob,index) => (
+          {problems.map((prob) => (
             <tr>
               <Link className = 'links'to={`/problems/:${prob.problemId}`}>
                 <td>{prob.title}</td>

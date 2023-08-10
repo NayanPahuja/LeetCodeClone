@@ -88,7 +88,7 @@ function App() {
       <Route path='/login' Component={Login}/>
       <Route path='/signup' Component={SignUp}/>
       <Route path = '/dashboard' Component={Dashboard}/>
-      <Route path="/problems/:pid/" element={<ProblemScreen problems={problems} />} />
+      <Route path="/problems/:pid/" element={<ProblemScreen/>} />
       </Routes>
         
       </BrowserRouter>

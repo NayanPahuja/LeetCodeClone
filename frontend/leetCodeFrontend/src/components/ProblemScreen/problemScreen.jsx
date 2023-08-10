@@ -1,21 +1,33 @@
-import React , { useState } from 'react'
+import React , { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import "./problemScreen.css"
 import NavBar from '../navbar'
 
 
 
-const ProblemScreen = ({problems}) => {
+const ProblemScreen = ({}) => {
     const [CodeSeg, setCodeSeg] = useState("") ;
     const { pid } = useParams() ;
     const cleanId = pid.substring(1) ;
+    const [problem, setProblem] = useState(null);
+    const [submission, setSubmission] = useState("");
   
     // console.log(cleanId) ;
-  
-    const found = problems.find((prob)=>{
-      return prob.problemId===cleanId;
-    })
-  
+    const init = async () => {
+      const response = await fetch(`http://localhost:3000/problem/` + cleanId, {
+        method: "GET",
+      });
+
+      const json = await response.json();
+      setProblem(json.problem);
+    // const problem = problems.find((prob)=>{
+    //   return prob.problemId===cleanId;
+    // })
+    }
+
+    useEffect(() => {
+      init()
+    },[])
   
     const handleKey = (event) => {
       if (event.key == "Tab"){
@@ -35,23 +47,45 @@ const ProblemScreen = ({problems}) => {
       <div>
   
         {
-          found? (
+          problem? (
             <div id="problempage" className='flex-row'>
               <div className="ques">
-                <h1>{found.title}</h1>
+                <h1>{problem.title}</h1>
                 <h5>Description</h5>
-                <p>{found.description}</p>
-                <h5>Example:</h5>
-                <code className='example'>Input : {found.exampleIn}</code>
-                <code className='example'>Output : {found.exampleOut}</code>
+                <p>{problem.description}</p>
+                <h5>Example</h5>
+                <code className='example'>Input : {problem.exampleIn}</code>
+                <code className='example'>Output : {problem.exampleOut}</code>
               </div>
               <div className="code">
                 <h1>Code Here</h1>
-                <form className='code-form' method="post" action='/runprogram' >
-                  <textarea name="SolvedCode" onKeyDown={ (event) => handleKey(event) }></textarea>
-                  <button type="submit" id="test">Test</button>
-                  <button type="submit" id="submit">Submit</button>
-                </form>
+                <div className='code-form'>
+                  <textarea onChange={(e) => {
+                    setSubmission(e.target.value)
+                  }} name="SolvedCode" onKeyDown={ (event) => handleKey(event) }></textarea>
+                  <button type="submit" id="submit" onClick={async () => {
+                  const response = await fetch(`http://localhost:3000/submission`, {
+                    method: "POST",
+                    headers: {
+                      "authorization": localStorage.getItem("token")
+                    },
+                    body: JSON.stringify({
+                      problemId: cleanId,
+                      submission: submission
+                    })
+                  });
+
+                  const json = await response.json();
+                  if(json.status === 'WA'){
+                    alert('Wrong Answer. Try Again!')
+                  }
+                  if(json.status === 'AC'){
+                    alert('Submission Accepted!')
+                  }
+                  console.log(json);
+
+                }}>SubmitCode</button>
+                </div>
               </div>
             </div>
           ) :
