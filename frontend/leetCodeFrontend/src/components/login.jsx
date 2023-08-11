@@ -3,7 +3,7 @@ import './login.css';
 import { Link } from 'react-router-dom';
 import NavBar from './navbar';
 import { useNavigate } from 'react-router-dom';
-import {backendUrl} from "../../constants.js";
+import { backendUrl } from '../constants';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
