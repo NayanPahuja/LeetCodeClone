@@ -1,1 +1,1 @@
-export const backendUrl = "";
+export const backendUrl = "leet-code-clone-beta.vercel.app";
