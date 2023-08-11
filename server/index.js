@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = process.env.port || 3000;
+const port = 3000;
 var jwt = require("jsonwebtoken");
 const { auth } = require("./middleware");
 let USER_ID_COUNTER = 1;
@@ -10,7 +10,7 @@ var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const cors = require("cors");
 const mongoose = require( 'mongoose')
-const mongodbURI = require("./constants");
+const mongodbURI = process.env.mongodbURI;
 app.use(cors());
 app.use(jsonParser);
 
@@ -19,13 +19,13 @@ const UserModel = require("./models/User")
 const SubmissionsModel = require("./models/Submissions")
 
 
-app.use(cors(
-  {
-    origin: ["https://leet-code-clone-beta.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true
-  }
-));
+// app.use(cors(
+//   {
+//     origin: ["https://leet-code-clone-beta.vercel.app"],
+//     methods: ["POST", "GET"],
+//     credentials: true
+//   }
+// ));
 
 
 mongoose.connect(mongodbURI)
@@ -43,7 +43,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/api/dashboard", async (req, res) => {
+app.get("/dashboard", async (req, res) => {
 	const filteredProblems = await ProblemsModel.find();
 
 	res.json({
@@ -54,7 +54,7 @@ app.get("/api/dashboard", async (req, res) => {
   
 
 
-app.get("/api/problem/:id", async (req, res) => {
+app.get("/problem/:id", async (req, res) => {
   const id = req.params.id;
 
   const problem = await ProblemsModel.findOne({ problemId: id });
@@ -69,12 +69,12 @@ app.get("/api/problem/:id", async (req, res) => {
   });
 });
 
-app.get("/api/me", auth, async (req, res) => {
+app.get("/me", auth, async (req, res) => {
   const user = await UserModel.findOne({ userId: req.userId });
 	res.json({ user });
 });
 
-app.get("/api/submissions/:problemId", auth, async (req, res) => {
+app.get("/submissions/:problemId", auth, async (req, res) => {
   const problemId = req.params.problemId;
   const submissions = await SubmissionsModel.find({
 		problemId: problemId,
@@ -85,7 +85,7 @@ app.get("/api/submissions/:problemId", auth, async (req, res) => {
   });
 });
 
-app.post("/api/submission", auth, async (req, res) => {
+app.post("/submission", auth, async (req, res) => {
 	const isCorrect = Math.random() < 0.5;
 	const { problemId, submission } = req.body;
 	let status = isCorrect ? "AC" : "WA";
@@ -103,7 +103,7 @@ app.post("/api/submission", auth, async (req, res) => {
 	});
 });
 
-app.post("/api/signup", async (req, res) => {
+app.post("/signup", async (req, res) => {
 	console.log(req.body);
 	try {
 		const existingEmail = await UserModel.findOne({
@@ -130,7 +130,7 @@ app.post("/api/signup", async (req, res) => {
 		return res.status(500).json({ message: "Server error" });
 	}
 });
-app.post("/api/login", async (req, res) => {
+app.post("/login", async (req, res) => {
 	console.log(req.body);
 	try {
 		const email = req.body.email;

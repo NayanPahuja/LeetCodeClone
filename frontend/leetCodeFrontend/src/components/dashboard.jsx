@@ -9,7 +9,7 @@ const Dashboard = () => {
     const init = async () => {
         
         try {
-          const response = await fetch(`${backendUrl}/dashboard`, {
+          const response = await fetch("http://localhost:3000/dashboard", {
             method: "GET"
           });
       
