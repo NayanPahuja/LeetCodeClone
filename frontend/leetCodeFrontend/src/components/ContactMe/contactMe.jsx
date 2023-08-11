@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../navbar';
-import "./ContactMe.css"
+import "./contactMe.css"
 const ContactMe = () => {
   return (
     <div>
