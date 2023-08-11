@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.port || 3000;
 var jwt = require("jsonwebtoken");
 const { auth } = require("./middleware");
 let USER_ID_COUNTER = 1;
@@ -11,7 +11,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const cors = require("cors");
 const mongoose = require( 'mongoose')
 const mongodbURI = process.env.mongodbURI;
-app.use(cors());
 app.use(jsonParser);
 
 const ProblemsModel = require("./models/Problems")
@@ -19,13 +18,13 @@ const UserModel = require("./models/User")
 const SubmissionsModel = require("./models/Submissions")
 
 
-// app.use(cors(
-//   {
-//     origin: ["https://leet-code-clone-beta.vercel.app"],
-//     methods: ["POST", "GET"],
-//     credentials: true
-//   }
-// ));
+app.use(cors(
+  {
+    origin: ["https://leetcode-clone-backend.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true
+  }
+));
 
 
 mongoose.connect(mongodbURI)
