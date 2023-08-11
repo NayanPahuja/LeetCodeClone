@@ -10,7 +10,7 @@ const RandomProblem = () => {
     const navigateToRandomProblem = async () => {
       const randomProblemId = Math.floor(Math.random() * 8) + 1;
       await new Promise((resolve) => setTimeout(resolve, 500)); // Simulating a delay
-      navigate(`/problems/:${randomProblemId}`);
+      navigate(`/problem/${randomProblemId}`);
     };
 
     // Navigate to a random problem when the component renders

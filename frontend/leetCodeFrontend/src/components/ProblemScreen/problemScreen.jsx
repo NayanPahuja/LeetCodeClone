@@ -14,7 +14,7 @@ const ProblemScreen = ({}) => {
   
     // console.log(cleanId) ;
     const init = async () => {
-      const response = await fetch(`${backendUrl}/problem/` + cleanId, {
+      const response = await fetch(`https://leetcode-clone-backend.vercel.app/problem/`+ cleanId, {
         method: "GET",
       });
 

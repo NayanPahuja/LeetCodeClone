@@ -12,7 +12,7 @@ const SignUp = () => {
     
     console.log('Submitting:', email, password);
 
-    const response = await fetch(`${backendUrl}/signup`, {
+    const response = await fetch("https://leetcode-clone-backend.vercel.app/signup", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // Make sure to set the Content-Type header

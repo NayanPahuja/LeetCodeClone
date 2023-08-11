@@ -14,7 +14,7 @@ const Login = () => {
 
     console.log('Submitting:', email, password);
 
-    const response = await fetch(`${backendUrl}/login`, {
+    const response = await fetch("https://leetcode-clone-backend.vercel.app/login", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
