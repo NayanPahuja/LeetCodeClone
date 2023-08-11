@@ -2,7 +2,7 @@ import React , { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import "./problemScreen.css"
 import NavBar from '../navbar'
-
+import { backendUrl } from "../../constants.js";
 
 
 const ProblemScreen = ({}) => {
@@ -14,7 +14,7 @@ const ProblemScreen = ({}) => {
   
     // console.log(cleanId) ;
     const init = async () => {
-      const response = await fetch(`http://localhost:3000/problem/` + cleanId, {
+      const response = await fetch(`${backendUrl}/problem/` + cleanId, {
         method: "GET",
       });
 

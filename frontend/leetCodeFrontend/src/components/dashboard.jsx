@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 import './dashboard.css'
 import NavBar from './navbar'
 import ProblemSet from './problemSet'
-
+import { backendUrl } from '../constants';
 
 const Dashboard = () => {
     const [problems, setProblems] = useState([])
     const init = async () => {
         
         try {
-          const response = await fetch("http://localhost:3000/dashboard", {
+          const response = await fetch(`${backendUrl}/dashboard`, {
             method: "GET"
           });
       

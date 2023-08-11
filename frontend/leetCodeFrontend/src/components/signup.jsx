@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './signup.css';
 import NavBar from './navbar';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { backendUrl } from '../constants';
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,7 +12,7 @@ const SignUp = () => {
     
     console.log('Submitting:', email, password);
 
-    const response = await fetch('http://localhost:3000/signup', {
+    const response = await fetch(`${backendUrl}/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // Make sure to set the Content-Type header

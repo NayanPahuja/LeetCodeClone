@@ -3,7 +3,7 @@ import './login.css';
 import { Link } from 'react-router-dom';
 import NavBar from './navbar';
 import { useNavigate } from 'react-router-dom';
-
+import {backendUrl} from "../../constants.js";
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,7 +14,7 @@ const Login = () => {
 
     console.log('Submitting:', email, password);
 
-    const response = await fetch('http://localhost:3000/login', {
+    const response = await fetch(`${backendUrl}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
