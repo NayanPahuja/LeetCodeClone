@@ -14,7 +14,7 @@ const ProblemScreen = ({}) => {
   
     // console.log(cleanId) ;
     const init = async () => {
-      const response = await fetch(`http://localhost:3000/problem/` + cleanId, {
+      const response = await fetch(`${backendUrl}/problem/` + cleanId, {
         method: "GET",
       });
 
