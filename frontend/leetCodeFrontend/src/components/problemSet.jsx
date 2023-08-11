@@ -9,7 +9,7 @@ const ProblemSet = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${backendUrl}/dashboard`, {
+      const response = await fetch("https://leetcode-clone-backend.vercel.app/dashboard", {
         method: "GET"
       });
 
