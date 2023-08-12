@@ -5,7 +5,28 @@
     align-items: flex-start;
     background-color: #1d1d1f;
 }
-
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .anim-container {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: #1d1d1f;
+    min-height: 100vh;
+    max-width: 100vw;
+  }
+  
+  .loading-spinner {
+    border: 4px solid whitesmoke;
+    border-left: 4px solid #007BFF;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    animation: spin 1s linear infinite;
+  }
 .ques , .code {
     width: 50%;
     min-height: 100vh;

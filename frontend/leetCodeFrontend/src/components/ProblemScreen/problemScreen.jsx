@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import "./problemScreen.css"
 import NavBar from '../navbar'
 import { backendUrl } from "../../constants.js";
+import { Navigate } from 'react-router-dom';
 
 
 const ProblemScreen = ({}) => {
@@ -64,7 +65,7 @@ const ProblemScreen = ({}) => {
                     setSubmission(e.target.value)
                   }} name="SolvedCode" onKeyDown={ (event) => handleKey(event) }></textarea>
                   <button type="submit" id="submit" onClick={async () => {
-                  const response = await fetch(`http://localhost:3000/submission`, {
+                  const response = await fetch(`https://leetcode-clone-backend.vercel.app/submission`, {
                     method: "POST",
                     headers: {
                       "authorization": localStorage.getItem("token")
@@ -76,6 +77,11 @@ const ProblemScreen = ({}) => {
                   });
 
                   const json = await response.json();
+                  
+                  if(json.msg === 'Incorrect token'){
+                    alert('Please Login First!')
+                  }
+
                   if(json.status === 'WA'){
                     alert('Wrong Answer. Try Again!')
                   }
@@ -89,7 +95,11 @@ const ProblemScreen = ({}) => {
               </div>
             </div>
           ) :
-          (<div>The searched Question Doesn't exist</div>)
+          
+          (
+          <div class = 'anim-container'>
+          <div className="loading-spinner"></div>
+          </div>)
         }
   
       </div>

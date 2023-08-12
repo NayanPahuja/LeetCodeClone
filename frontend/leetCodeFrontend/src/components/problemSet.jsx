@@ -28,7 +28,9 @@ const ProblemSet = () => {
 
   const renderProblems = () => {
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <div class = 'anim-container'>
+      <div className="loading-spinner"></div>
+      </div>;
     }
     
     return (

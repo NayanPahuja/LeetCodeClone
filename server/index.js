@@ -135,13 +135,13 @@ app.post("/login", async (req, res) => {
 		const email = req.body.email;
 		const password = req.body.password;
 		const user = await UserModel.findOne({
-			name: req.body.username,
+			email : email
 		});
 		if (!user) {
 			return res.status(403).json({ msg: "User not found" });
 		}
 
-		const isMatch = await user.comparePassword(req.body.password);
+		const isMatch = await user.comparePassword(password);
 		if (!isMatch) {
 			return res.status(403).json({ msg: "Incorrect password" });
 		}
