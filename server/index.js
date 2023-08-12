@@ -12,19 +12,19 @@ const cors = require("cors");
 const mongoose = require( 'mongoose')
 const mongodbURI = process.env.mongodbURI;
 app.use(jsonParser);
-
+app.use(cors())
 const ProblemsModel = require("./models/Problems")
 const UserModel = require("./models/User")
 const SubmissionsModel = require("./models/Submissions")
 
 
-app.use(cors(
-  {
-    origin: ["https://leet-code-clone-chi.vercel.app/"],
-    methods: ["POST", "GET"],
-    credentials: true
-  }
-));
+// app.use(cors(
+//   {
+//     origin: ["https://leet-code-clone-chi.vercel.app/"],
+//     methods: ["POST", "GET"],
+//     credentials: true
+//   }
+// ));
 
 
 mongoose.connect(mongodbURI)
