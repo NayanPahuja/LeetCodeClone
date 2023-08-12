@@ -20,7 +20,7 @@ const SubmissionsModel = require("./models/Submissions")
 
 app.use(cors(
   {
-    origin: '*',
+    origin: 'https://leet-code-clone-chi.vercel.app/',
     methods: ["POST", "GET"],
     credentials: true
   }
