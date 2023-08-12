@@ -20,7 +20,7 @@ const SubmissionsModel = require("./models/Submissions")
 
 app.use(cors(
   {
-    origin: origin,
+    origin: '*',
     methods: ["POST", "GET"],
     credentials: true
   }
