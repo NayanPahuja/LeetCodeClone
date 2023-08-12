@@ -18,15 +18,17 @@ const UserModel = require("./models/User")
 const SubmissionsModel = require("./models/Submissions")
 
 
-// app.use(cors(
-//   {
-//     origin: ["https://leet-code-clone-chi.vercel.app/"],
-//     methods: ["POST", "GET"],
-//     credentials: true
-//   }
-// ));
+app.use(cors(
+  {
+    origin: origin,
+    methods: ["POST", "GET"],
+    credentials: true
+  }
+));
 
-app.use(cors())
+// app.use(cors(
+	
+// ))
 mongoose.connect(mongodbURI)
   .then( () => {
       console.log('Connected to the database ')
